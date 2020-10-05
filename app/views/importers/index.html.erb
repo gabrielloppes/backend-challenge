@@ -1,0 +1,27 @@
+
+<main>
+  <%= render partial: "layouts/sidebar"  %>
+  <h1>Importadores CNAB</h1>
+  <%= link_to "Novo Importador CNAB", new_importer_path %>
+  <table>
+    <thead>
+      <tr>
+        <th>Data Importação</th>
+        <th>Quantidade de Transações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @importers.each do |importer| %>
+      <tr class="importer">
+        <td>
+          <%= importer.created_at.strftime("%d/%m/%y - %H:%M:%S") %>
+        </td>
+        <td>
+          <%= importer.transactions.count %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>
+</div>

@@ -1,0 +1,35 @@
+<%= render partial: "layouts/sidebar" %>
+<main>
+  <h1>Lojas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Dono</th>
+        <th>Saldo</th>
+        <th>Quantidade de Transações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @stores.each do |store| %>
+        <tr class="store">
+          <td>
+            <%= store.name %>
+          </td>
+          <td>
+            <%= store.owner %>
+          </td>
+          <td>
+            <%= number_to_currency(store.balance/100.0, unit: "R$ ", separator: ",", delimiter: ".") %>
+          </td>
+          <td>
+            <%= store.transactions.count %>
+          </td>
+          <td>
+            <%= link_to "Visualizar", store_path(store) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>

@@ -1,0 +1,12 @@
+nav {
+  display: grid;
+  grid-template-columns: 100px;
+  grid-template-areas:
+    'sidenav'
+    'sidenav'
+    'sidenav';
+}
+
+nav {
+  grid-area: sidenav;
+}

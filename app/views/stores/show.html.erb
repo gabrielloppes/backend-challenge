@@ -1,0 +1,34 @@
+<%= render partial: "layouts/sidebar" %>
+<main>
+  <h2 class="balance">
+    Saldo: <%= number_to_currency(@store.balance/100.0, unit: "R$ ", separator:
+    ",", delimiter: ".") %>
+  </h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Tipo</th>
+        <th>Valor</th>
+        <th>Cpf</th>
+        <th>Cartão</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @store.transactions.each do |transaction| %>
+      <tr class="transaction">
+        <td><%= transaction.processed_at.strftime("%d/%m/%y - %H:%M:%S") %></td>
+        <td>
+          <%= transaction.kind_description %> - <%= transaction.kind_text %>
+        </td>
+        <td>
+          <%= number_to_currency(transaction.amount/100.0, unit: "R$ ",
+          separator: ",", delimiter: ".") %>
+        </td>
+        <td><%= transaction.document %></td>
+        <td><%= transaction.card %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>
